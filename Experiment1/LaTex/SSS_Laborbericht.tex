@@ -1,0 +1,461 @@
+%---------------
+%╔═╗╔═╗╔╦╗╦ ╦╔═╗
+%╚═╗║╣  ║ ║ ║╠═╝
+%╚═╝╚═╝ ╩ ╚═╝╩  
+%---------------
+
+% language setup
+\newcommand{\docLanguage}{ngerman}
+%\newcommand{\docLanguage}{english}
+
+% DOCUMENT SETUP
+\documentclass[12pt, oneside, a4paper, \docLanguage]{report}
+\usepackage[left=3cm, 
+			right=2.5cm, 
+			top=2.5cm, 
+			bottom=2.5cm, 
+			includehead, 
+			includefoot]{geometry}
+
+% line spacing
+\usepackage{setspace}
+\setstretch{1,25} % 15/12 --> 1.25
+
+% encoding setup
+% T1 font encoding for languages that use a latin alphabet
+\usepackage[T1]{fontenc} 
+
+% enhanced input encoding handling - utf8 for äÄüÜöÖß...
+\usepackage[utf8]{inputenc}
+
+%de­fines Adobe Times Ro­man as de­fault text font
+\usepackage{mathptmx}
+\usepackage{times} % needed for acronym package
+
+%PDF linking package
+\usepackage[hidelinks]{hyperref}
+
+
+% Language Setup
+\usepackage[\docLanguage]{babel}
+% after babel - set chapter string
+\AtBeginDocument{\renewcommand{\chaptername}{}}
+
+% language specific bibliography style
+\usepackage[numbers, square]{natbib}
+%\setcitestyle{square,aysep={},yysep={;}}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{\docLanguage}
+% bliographystyle setup
+% babel specific: babplain, babplai3, babalpha, babunsrt, bababbrv, bababbr3
+\bibliographystyle{babunsrt}
+
+
+% enumeration
+\usepackage{enumitem}
+% tabular extension tabularx
+\usepackage{tabularx}
+
+% math packages
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{MnSymbol}
+
+
+%special characters
+\usepackage{amssymb}
+\usepackage{upgreek,textgreek}
+
+% acronym package
+\usepackage[printonlyused, footnote]{acronym}
+
+% breakable text in \seqsplit{}
+\usepackage{seqsplit}
+
+% \textmu
+\usepackage{textcomp}
+
+% package provides a way to compile sections of a document using the same preamble as the main document
+\usepackage{subfiles}
+
+% driver-independent color extension - used by listings,tabularx
+\usepackage[usenames,dvipsnames,table,xcdraw]{xcolor}
+
+% -- SYNTAX HIGHLIGHTING --
+\usepackage{listings}
+%\input{cfgs/listings/listings_def_lang_bash-cmd.tex} % adds style BASH_CMD
+%\input{cfgs/listings/listings_def_lang_bash-script.tex} % adds style BASH_SCRIPT
+\input{cfgs/listings/listings_def_lang_latex.tex} % adds style LATEX
+%\input{cfgs/listings/listings_def_lang_matlab.tex} % adds style MATLAB
+\input{cfgs/listings/listings_def_lang_python.tex} % adds style PYTHON
+%\input{cfgs/listings/listings_def_lang_c++.tex} % adds style CPP
+%\input{cfgs/listings/listings_def_lang_c.tex} % adds style C
+%\input{cfgs/listings/listings_def_lang_json.tex} % adds style JSON
+
+% HEADLINE CFG
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{lastpage}
+\usepackage{ifthen}
+\setlength{\headheight}{1.5cm}
+%\pagestyle{fancy} % All pages have headers and footers
+% override plain page style for \part, \chapter or 
+% \maketitle, which implicit specifies plain page style
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_plain.tex}
+% set list pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_preface.tex}
+% set default pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_onepage.tex}
+%\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_twopage.tex}
+
+\renewcommand{\chaptermark}[1]{\markright{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% PICTURE CFG 
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage[list=true,listformat=simple]{subcaption}
+% floating prevention packages
+\usepackage{float}    % used with [H] positioning parameter
+\usepackage{placeins} % \FloatBarrier 
+% tikz packages
+\usepackage{tikz}
+\usepackage{standalone}
+\usepackage{pgfplots}
+
+% for sourcecode
+\usepackage{listings}
+\lstset{numbers=left, numbersep=2pt}
+\lstset{language=python}
+
+% to include PDFs
+\usepackage{pdfpages}
+
+% path to images
+\graphicspath{ {../images/} }
+
+% include only specified tex files - uncommend here
+\includeonly{preface/cover,
+             preface/abstract,
+             preface/tableofcontents,
+             preface/listoffigures,
+             preface/listoftables,
+             preface/lstlistoflistings,
+             appendix/bibliography}
+
+%-------------------
+%╔═╗╔╦╗╦═╗╦╔╗╔╔═╗╔═╗
+%╚═╗ ║ ╠╦╝║║║║║ ╦╚═╗
+%╚═╝ ╩ ╩╚═╩╝╚╝╚═╝╚═╝
+%-------------------
+\newcommand{\strLecture}{Signale, Systeme und Sensoren}
+\newcommand{\strDate}{\today}
+\newcommand{\strAuthorA}{Tim Koehler}
+\newcommand{\strAuthorB}{Roland Gurke}
+%\newcommand{\strAuthorC}{C. Author}
+\newcommand{\strAuthorAEmail}{tim.koehler@htwg-konstanz.de}
+\newcommand{\strAuthorBEmail}{roland.burke@htwg-konstanz.de}
+%\newcommand{\strAuthorCEmail}{cauthor@htwg-konstanz.de}
+% Versuchsbeschreibung 
+\newcommand{\strTopic}{Aufbau, Kalibrierung und Einsatz eines einfachen Entfernungsmessers}
+\newcommand{\strAbstract}{In diesem Versuch werden die in der Vorlesung behandelten Techniken zur Kalibrierung, Fehleranalyse und Fehlerrechnung auf den Fall eines Entfernungsmessers angewandt.\linebreak Der Entfernungsmesser basiert auf dem häufig in der Robotik eingesetzten Distanzsensor GP2Y0A21YK0F der Firma Sharp (s. Datenblatt im Anhang), der nach dem Triangulationsprinzip arbeitet.
+Im folgenden wird der aus drei Teilen bestehende Versuch behandelt.
+\begin{enumerate}
+    \item Ermittlung der Kennlinie des Abstandssensors.
+		Die erste Aufgabe besteht aus der Messung von Stichprobenwerten 			um die Kennlinie des Sensors zu ermitteln.
+	\item Modellierung der Kennlinie durch lineare Regression.
+		In dieser Aufgabe nutzen wir die zuvor gemessenen Werte um 					berechnen die Ausgleichsgerade.
+	\item Flächenmessung mit Fehlerrechnung.
+		Im letzten Teil des Versuchs wird der Messfehler des Sensors 				bestimmt und der Flächeninhalt eines DIN A4 Papiers bestimmt.
+\end{enumerate}}
+
+% hyperref customization
+\hypersetup{
+	pdftitle     = {\strTopic}, % title
+	pdfsubject   = {\strLecture}, % subject of the document
+	pdfauthor    = {\strAuthorA, \strAuthorB}, % author
+	pdfkeywords  = {}, % list of keywords
+	pdfcreator   = {}, % creator of the document
+	pdfproducer  = {}, % producer of the document
+	colorlinks   = false, % false: boxed links; true: colored links
+	linkcolor    = red, % color of internal links (change box color with linkbordercolor)
+    citecolor    = green, % color of links to bibliography
+    filecolor    = magenta, % color of file links
+    urlcolor     = cyan, % color of external links
+	%bookmarks    = true, % show bookmarks bar?
+	unicode	     = true, % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar   = true, % show Acrobat’s toolbar?
+	pdfmenubar   = true, % show Acrobat’s menu?
+    pdffitwindow = false, % window fit to page when opened
+	pdfnewwindow = true % links in new PDF window
+}
+
+%-----------------------------------------
+% ╔╗ ╔═╗╔═╗╦╔╗╔  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗ 
+% ╠╩╗║╣ ║ ╦║║║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║  
+% ╚═╝╚═╝╚═╝╩╝╚╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩  
+%-----------------------------------------
+
+\begin{document}
+\pagenumbering{Roman} 
+
+\setcounter{section}{0}
+\include{preface/cover}
+
+\include{preface/abstract}
+\clearpage
+
+%
+% TABLE OF CONTENTS
+%
+\include{preface/tableofcontents}
+
+%
+% Abbildungsverzeichnis
+%
+\include{preface/listoffigures}
+
+%
+% Tabellenverzeichnis
+%
+%\include{preface/listoftables}
+
+%
+% Listingverzeichnis
+%
+%\include{preface/lstlistoflistings}
+
+
+%--------------------------
+% ╔═╗╦ ╦╔═╗╔═╗╔╦╗╔═╗╦═╗╔═╗ 
+% ║  ╠═╣╠═╣╠═╝ ║ ║╣ ╠╦╝╚═╗ 
+% ╚═╝╩ ╩╩ ╩╩   ╩ ╚═╝╩╚═╚═╝ 
+%--------------------------
+
+\pagenumbering{arabic} 
+\setcounter{page}{1} 
+\pagestyle{default}
+%
+% CHAPTER Einleitung
+%
+\chapter{Einleitung}
+\label{chap:EINL}
+\begin{normalsize}
+Das ist die Einleitung
+\end{normalsize}
+
+
+%
+% CHAPTER Versuch 1
+%
+\chapter{Versuch 1}
+\label{chap:VERSUCH_1}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_1_FRAGESTELLUNG}
+\begin{normalsize}
+Fragestellung:\\
+Wie sieht die Kennlinie des Abstandssensors aus?
+\newline
+\newline
+Messprinzip:\\
+Diese Sensoren besitzen eine Infrarot-LED mit einer Linse, die einen schmalen
+Lichtstrahl aussendet. Dieser wird von dem Objekt, zu dem die Distanz gemessen werden
+soll, reflektiert und dann durch die zweite Linse zu einem optischen Positionssensor (OPS,
+engl. position sensitive detector PSD, s. Zeichnung) gelenkt. Die Leitfähigkeit dieses OPS ist
+abhängig davon, an welcher Stelle der Lichtstrahl einfällt. Sie wird mit einem Signalprozessor
+in eine Spannung umgewandelt, die am Ausgang des Sensors ausgegeben wird.\\
+\begin{minipage}{\linewidth}
+\begin{center}
+\includegraphics[scale=0.38]{Sensor.png}
+\end{center}
+\end{minipage}
+Aufbau und Messmittel:\\
+Der Aufbau des Versuchs besteht aus einem Netzteil welches eine Spannung von 5V liefert, einem Abstandssensor, einem Brett um den Abstand zum Sensor variabel ändern zu können, einem weiteren Gerät um das analoge Ausgangssignal des Sensors auf den PC zu übertragen und mit PicoScope darzustellen.\newline
+\begin{center}
+\includegraphics[scale=0.1]{20191021_160106.jpg}
+\end{center}
+\end{normalsize}
+
+
+\section{Messwerte}
+\label{chap:VERSUCH_1_MESSWERTE}
+\includepdf[pages=-]{Messwerte.pdf}
+
+
+\section{Auswertung}
+\label{chap:VERSUCH_1_AUSWERTUNG}
+\begin{normalsize}
+Nach der Aufnahme der Messwerte werden diese als .csv Dateien abgespeichert und anschließend mit Python weiterverarbeitet.
+Anschließend der bestimmung des Mittelwertes sieht die Kennlinie wie folg aus:\\
+\begin{minipage}{\linewidth}
+\includegraphics[scale=1]{ExpRegrRaw.png}
+\end{minipage}
+\end{normalsize}
+
+\section{Interpretation}
+\label{chap:VERSUCH_1_INTERPRETATION}
+\begin{normalsize}
+Durch die grafische Darstellung der Messwerte ist sehr gut zu erkennn dass sich der Sensor nicht linear verhält. Bei der Änderung von 67cm zu 70cm ist die Spannungsdifferenz z.B viel kleiner als bei 10cm zu 13cm.
+\end{normalsize}
+
+%
+% CHAPTER Versuch 2
+%
+\chapter{Versuch 2}
+\label{chap:VERSUCH_2}
+
+\section{Fragestellung}
+\label{chap:VERSUCH_2_FRAGESTELLUNG}
+\begin{normalsize}
+Da es sich bei der Kennlinie des Sonsors eindeutig um eine nicht lineare Funktion handelt sondern um ein Potenzfunktion:
+\begin{align*}
+y=x^a
+\end{align*}
+muss diese erste logarithmiert werden.
+Im Anschluss muss dann die Ausgleichgerade mit Hilfe der linearen Regression gebildet werden.
+\end{normalsize}
+\pagebreak
+
+\section{Auswertung}
+\label{chap:VERSUCH_2_AUSWERTUNG}
+\begin{normalsize}
+Die Kennlinie sieht nach der logarithmierung der Messwerte folgenderamßen aus:\\
+\begin{minipage}{\linewidth}
+\begin{center}
+\includegraphics[scale=1]{LinearRegrRaw.png}
+\end{center}
+\end{minipage}
+\newline
+\newline
+Jetzt geht es darum die Ausgleichsgerade zu finden.
+\begin{align*}
+y = a * x + b
+\end{align*}
+Bevor wir jedoch mit der berechnung von a und b beginnen können müssen wir noch den Mittelwert $\bar{x}$ bestimmen.\\
+\newline
+Berechnung von a:
+\begin{align*}
+a = \frac{\sum_{i=1}^n(x_i-\bar{x}) * (y_i - \bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
+\end{align*}
+Berechnung von b:
+\begin{align*}
+a = \bar{y} - a * \bar{x}
+\end{align*}
+\end{normalsize}
+
+\section{Interpretation}
+\label{chap:VERSUCH_2_INTERPRETATION}
+\begin{normalsize}
+Diese Geradengleichung entsteht bei unseren Messwerten:
+\begin{align*}
+y = -0.781x + 2.296
+\end{align*}
+Grafisch dargestellt:\\
+\begin{minipage}{\linewidth}
+\begin{center}
+\includegraphics[scale=1]{LinearRegr.png}
+\end{center}
+\end{minipage}
+\end{normalsize}
+\newpage
+\begin{normalsize}
+Jetzt müssen die Werte noch rücklogarithmiert werden:\\
+\begin{minipage}{\linewidth}
+\begin{center}
+\includegraphics[scale=1]{ExpRegr.png}
+\end{center}
+\end{minipage}
+\end{normalsize}
+%
+% CHAPTER Versuch 3
+%
+\chapter{Versuch 3}
+\label{chap:VERSUCH_3}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_3_FRAGESTELLUNG}
+\begin{normalsize}
+Bei diesem Versuch geht es um die Bestimmung des Flächeninhalts eines DIN A4 Blattes.\\
+Das Messprinzip un der Messaufbau ist der selbe wie in Versuch 1.
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_3_MESSWERTE}
+\begin{minipage}{\linewidth}
+\begin{center}
+\includegraphics[scale=1]{BlattMesswerte.png}
+\end{center}
+\end{minipage}
+
+\section{Auswertung}
+\label{chap:VERSUCH_3_AUSWERTUNG}
+\begin{normalsize}
+Wir haben zuerst in Python für beide Seiten den Durchschnitt der Werte der Spannungsmessung berechnet. Dann haben wir für den Fehlerbereich die Standardabweichung des Mittelwertes berechnet. Für eine Sicherheit von 95\% muss man die Standardabweichung noch mit 2 multiplizieren. Das Ergebnis der Spannungsmessung mit einer Sicherheit von 95\% für die lange Seite ist $0,699 \pm 1,96 * 2 * 0,000492V$ und für die kurze Seite $0,872 \pm 1,96 * 2 * 0,000525V$.
+Mit einer Sicherheit von 68\%: lange Seite: $0,699 \pm 1 * 0,000246V$; Kurze Seite: $0,872 \pm 1 * 0,000262V$.
+Nun berchnen wir die Länge in cm, indem wir die Durchschnittlichen Volt Werte in die Umkehrfunktion $f(x)=e^(\frac{ln(x)-b}{a}$ einsetzen. Den Fehler haben wir mit Hilfe der "lokalen Näherung durch die Tagente"\enspace $\Delta y = f'(x) * \Delta x$ berechnet. Hier haben wir mit einer Sicherheit von 95\% weitergerechnet.
+Den Fehler der Flächenberechnung haben wir mit der Gaußen Fehlerfortpflanzung bestimmt.\\
+\begin{align*}
+\frac{\partial}{\partial l}f(l,k) = k
+\end{align*}
+\begin{align*}
+\frac{\partial}{\partial k}f(l,k) = l
+\end{align*}
+Daraus ergibt sich:
+\begin{align*}
+\Delta A = \sqrt{(xk * \Delta xl)^2 + (xl * \Delta xk)^2}
+\end{align*}
+\newline
+Die Fläche beträgt dann also 676,75cm² $\pm$ 1,58cm².
+\end{normalsize}
+
+%
+% CHAPTER Anhang
+%
+\renewcommand\thesection{A.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\chapter*{Anhang}
+\label{chap:APPENDIX}
+\addcontentsline{toc}{chapter}{Anhang}
+%\setcounter{chapter}{0}
+\addtocounter{chapter}{1}
+\setcounter{section}{0}
+
+\section{Quellcode}
+\label{chap:APPENDIX_SOURCECODE}
+
+\subsection{Quellcode Versuch 1}
+\label{chap:APPENDIX_SOURCECODE_V1}
+
+\subsection{Quellcode Versuch 2}
+\label{chap:APPENDIX_SOURCECODE_V2}
+
+\subsection{Quellcode Versuch 3}
+\label{chap:APPENDIX_SOURCECODE_V3}
+
+\subsection{Quellcode Versuch 4}
+\label{chap:APPENDIX_SOURCECODE_V4}
+
+
+\section{Messergebnisse}
+\label{chap:APPENDIX_MEASUREMENT_SOURCE}
+
+%
+% Literaturverzeichnis
+%
+\include{appendix/bibliography}
+
+\end{document}
+%------------------------------------
+% ╔═╗╔╗╔╔╦╗  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗
+% ║╣ ║║║ ║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║ 
+% ╚═╝╝╚╝═╩╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩ 
+%------------------------------------

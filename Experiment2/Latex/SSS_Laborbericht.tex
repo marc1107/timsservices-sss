@@ -1,0 +1,594 @@
+%---------------
+%╔═╗╔═╗╔╦╗╦ ╦╔═╗
+%╚═╗║╣  ║ ║ ║╠═╝
+%╚═╝╚═╝ ╩ ╚═╝╩  
+%---------------
+
+% language setup
+\newcommand{\docLanguage}{ngerman}
+%\newcommand{\docLanguage}{english}
+
+% DOCUMENT SETUP
+\documentclass[12pt, oneside, a4paper, \docLanguage]{report}
+\usepackage[left=3cm, 
+			right=2.5cm, 
+			top=2.5cm, 
+			bottom=2.5cm, 
+			includehead, 
+			includefoot]{geometry}
+
+% line spacing
+\usepackage{setspace}
+\setstretch{1,25} % 15/12 --> 1.25
+
+% encoding setup
+% T1 font encoding for languages that use a latin alphabet
+\usepackage[T1]{fontenc} 
+
+% enhanced input encoding handling - utf8 for äÄüÜöÖß...
+\usepackage[utf8]{inputenc}
+
+%de­fines Adobe Times Ro­man as de­fault text font
+\usepackage{mathptmx}
+\usepackage{times} % needed for acronym package
+
+%PDF linking package
+\usepackage[hidelinks]{hyperref}
+
+% Language Setup
+\usepackage[\docLanguage]{babel}
+% after babel - set chapter string
+\AtBeginDocument{\renewcommand{\chaptername}{}}
+
+% language specific bibliography style
+\usepackage[numbers, square]{natbib}
+%\setcitestyle{square,aysep={},yysep={;}}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{\docLanguage}
+% bliographystyle setup
+% babel specific: babplain, babplai3, babalpha, babunsrt, bababbrv, bababbr3
+\bibliographystyle{babunsrt}
+
+
+% enumeration
+\usepackage{enumitem}
+% tabular extension tabularx
+\usepackage{tabularx}
+
+% math packages
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{MnSymbol}
+
+
+%special characters
+\usepackage{amssymb}
+\usepackage{upgreek,textgreek}
+
+% acronym package
+\usepackage[printonlyused, footnote]{acronym}
+
+% breakable text in \seqsplit{}
+\usepackage{seqsplit}
+
+% \textmu
+\usepackage{textcomp}
+
+% package provides a way to compile sections of a document using the same preamble as the main document
+\usepackage{subfiles}
+
+% driver-independent color extension - used by listings,tabularx
+\usepackage[usenames,dvipsnames,table,xcdraw]{xcolor}
+
+% -- SYNTAX HIGHLIGHTING --
+\usepackage{listings}
+%\input{cfgs/listings/listings_def_lang_bash-cmd.tex} % adds style BASH_CMD
+%\input{cfgs/listings/listings_def_lang_bash-script.tex} % adds style BASH_SCRIPT
+\input{cfgs/listings/listings_def_lang_latex.tex} % adds style LATEX
+%\input{cfgs/listings/listings_def_lang_matlab.tex} % adds style MATLAB
+\input{cfgs/listings/listings_def_lang_python.tex} % adds style PYTHON
+%\input{cfgs/listings/listings_def_lang_c++.tex} % adds style CPP
+%\input{cfgs/listings/listings_def_lang_c.tex} % adds style C
+%\input{cfgs/listings/listings_def_lang_json.tex} % adds style JSON
+
+% HEADLINE CFG
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{lastpage}
+\usepackage{ifthen}
+\setlength{\headheight}{1.5cm}
+%\pagestyle{fancy} % All pages have headers and footers
+% override plain page style for \part, \chapter or 
+% \maketitle, which implicit specifies plain page style
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_plain.tex}
+% set list pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_preface.tex}
+% set default pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_onepage.tex}
+%\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_twopage.tex}
+
+\renewcommand{\chaptermark}[1]{\markright{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% PICTURE CFG 
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage[list=true,listformat=simple]{subcaption}
+% floating prevention packages
+\usepackage{float}    % used with [H] positioning parameter
+\usepackage{placeins} % \FloatBarrier 
+% tikz packages
+\usepackage{tikz}
+\usepackage{standalone}
+\usepackage{pgfplots}
+
+
+% include only specified tex files - uncommend here
+\includeonly{preface/cover,
+             preface/abstract,
+             preface/tableofcontents,
+             preface/listoffigures,
+             preface/listoftables,
+             preface/lstlistoflistings,
+             appendix/bibliography}
+
+\graphicspath{ {../Images/} }
+
+
+%-------------------
+%╔═╗╔╦╗╦═╗╦╔╗╔╔═╗╔═╗
+%╚═╗ ║ ╠╦╝║║║║║ ╦╚═╗
+%╚═╝ ╩ ╩╚═╩╝╚╝╚═╝╚═╝
+%-------------------
+\newcommand{\strLecture}{Signale, Systeme und Sensoren}
+\newcommand{\strDate}{\today}
+\newcommand{\strAuthorA}{Tim Köhler}
+\newcommand{\strAuthorB}{Roland Burke}
+%\newcommand{\strAuthorC}{C. Author}
+\newcommand{\strAuthorAEmail}{tim.koehler@htwg-konstanz.de}
+\newcommand{\strAuthorBEmail}{roland.burke@htwg-konstanz.de}
+%\newcommand{\strAuthorCEmail}{cauthor@htwg-konstanz.de}
+% Versuchsbeschreibung 
+\newcommand{\strTopic}{Kalibrierung von Digitalkameras}
+\newcommand{\strAbstract}{In diesem Versuch werden die Eigenschaften von digitalen Kameras untersucht. Wir führen dazu eine Kalibrierung des Kamerasensors durch, wie sie etwa bei industriellen Inspektionsanlagen, bei der Fernerkundung durch Satelliten oder in der Astronomie gemacht wird.
+Dieser Prozess ist in 4 Teile aufgeteilt:\newline
+\begin{enumerate}
+\item \textbf{Aufnahme und Analyse eines Grauwertkeiles}\newline
+In dieser Teilaufgabe wird ein Bild eines Grauwertkeils mit Hilfe von Python aufgenommen und der Mittelwert sowie die Standartabweichung der einzelnen Stufen berechnet.
+\item \textbf{Aufnahme eines Dunkelbilder}\newline
+Hier werden 10 Bilder mit abgedeckter Kamera gemacht(Dunkelbilder) und anschließend der Mittelwert eines jeden Pixels der 10 Bilder zu einen neuen Durchschnittsbild berechnet.
+\item \textbf{Aufnahme eines Weißbildes}\newline
+Gleich wie bei bei Aufgabe 2.
+\item \textbf{Pixelfehler}\newline
+Die letzte Aufgabe beinhaltet die Reparatur von \textit{dead pixels}, \textit{stuck pixels} und \textit{hot pixels} in	den Ursprungsbildern
+\end{enumerate}
+}
+% hyperref customization
+\hypersetup{
+	pdftitle     = {\strTopic}, % title
+	pdfsubject   = {\strLecture}, % subject of the document
+	pdfauthor    = {\strAuthorA, \strAuthorB}, % author
+	pdfkeywords  = {}, % list of keywords
+	pdfcreator   = {}, % creator of the document
+	pdfproducer  = {}, % producer of the document
+	colorlinks   = false, % false: boxed links; true: colored links
+	linkcolor    = red, % color of internal links (change box color with linkbordercolor)
+    citecolor    = green, % color of links to bibliography
+    filecolor    = magenta, % color of file links
+    urlcolor     = cyan, % color of external links
+	%bookmarks    = true, % show bookmarks bar?
+	unicode	     = true, % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar   = true, % show Acrobat’s toolbar?
+	pdfmenubar   = true, % show Acrobat’s menu?
+    pdffitwindow = false, % window fit to page when opened
+	pdfnewwindow = true % links in new PDF window
+}
+
+%-----------------------------------------
+% ╔╗ ╔═╗╔═╗╦╔╗╔  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗ 
+% ╠╩╗║╣ ║ ╦║║║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║  
+% ╚═╝╚═╝╚═╝╩╝╚╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩  
+%-----------------------------------------
+
+\begin{document}
+\pagenumbering{Roman} 
+
+\setcounter{section}{0}
+\include{preface/cover}
+
+\include{preface/abstract}
+\clearpage
+
+%
+% TABLE OF CONTENTS
+%
+\include{preface/tableofcontents}
+
+%
+% Abbildungsverzeichnis
+%
+\include{preface/listoffigures}
+
+%
+% Tabellenverzeichnis
+%
+%\include{preface/listoftables}
+
+%
+% Listingverzeichnis
+%
+\include{preface/lstlistoflistings}
+
+
+%--------------------------
+% ╔═╗╦ ╦╔═╗╔═╗╔╦╗╔═╗╦═╗╔═╗ 
+% ║  ╠═╣╠═╣╠═╝ ║ ║╣ ╠╦╝╚═╗ 
+% ╚═╝╩ ╩╩ ╩╩   ╩ ╚═╝╩╚═╚═╝ 
+%--------------------------
+
+\pagenumbering{arabic} 
+\setcounter{page}{1} 
+\pagestyle{default}
+%
+% CHAPTER Einleitung
+%
+\chapter{Einleitung}
+\label{chap:EINL}
+\begin{normalsize}
+Digitale Kameras werden heutzutage überall eingesetzt. Jeder der heute ein Smartphone bestizt, hat auch eine oder sogar mehrere digital Kameras dabei. Außerdem werden solche Kameras bei Satelliten, industriellen Inspektionsanlagen oder zum Beispiel in autonom fahrenden Autos verwendet. Diese funktionieren aber nicht immer einwandfrei und deshalb wollen wir in diesem Versuch eine Digitalkamera kalibrieren und auf Fehler, wie beispielsweise nicht funktionierende Pixel, untersuchen. In unserem Fall untersuchen wir eine Logitech Webcam am Arbeitsplatz im Labor.
+\end{normalsize}
+
+
+%
+% CHAPTER Versuch 1
+%
+\chapter{Versuch 1}
+\label{chap:VERSUCH_1}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_1_FRAGESTELLUNG}
+\begin{normalsize}
+\textbf{Fragestellung:}\newline
+In diesem Versuch überprüfen wir, wie gut die Webcam am Arbeitsplatz einen stufenförmigen
+Grauwertverlauf aufnehmen kann.\newline
+\textbf{Aufbau:}\newline
+\end{normalsize}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.08]{Versuchsaufbau2.jpg}
+\caption{Versuchsaufbau}
+\end{figure}
+\pagebreak
+\textbf{Messmittel:}
+\begin{itemize}
+\item Logitech Webcam
+\item Grauwertkeil
+\item opencv (Python)
+\end{itemize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_1_MESSWERTE}
+\begin{normalsize}
+Das Bild des Grauwertkeils sieht folgendermaßen aus:
+\end{normalsize}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{../Greyscale.png}
+\caption{Orginales Grauwertbild}
+\end{figure}	
+\pagebreak
+\begin{flushleft}
+Mit dem Histogram des Grauwertbildes kann ermittelt werden ob weiß oder schwarz in die Sättigung gehen.
+\end{flushleft}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{./Histograms/HistGreyscale.png}
+\caption{Historgram des Grauwertkeils}
+\end{figure}
+
+\section{Auswertung}
+\label{chap:VERSUCH_1_AUSWERTUNG}
+\begin{normalsize}
+Mit \hyperref[chap:APPENDIX_SOURCECODE_V1]{\textit{diesem}} Python Script wird das Grauwertbild verarbeitet und in die folgenden Teilbilder zerschnitten:
+\end{normalsize}
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.35\textwidth}
+  \centering
+  \includegraphics[width=.35\linewidth]{../whiteSlice.png}
+  \caption{Weiß}
+  \label{fig:sub1}
+\end{subfigure}
+\begin{subfigure}{.35\textwidth}
+  \centering
+  \includegraphics[width=.35\linewidth]{../whiteGreySlice.png}
+  \caption{Weiß-Grau}
+  \label{fig:sub2}
+\end{subfigure}
+\begin{subfigure}{.35\textwidth}
+  \centering
+  \includegraphics[width=.35\linewidth]{../greySlice.png}
+  \caption{Grau}
+  \label{fig:sub3}
+\end{subfigure}
+\begin{subfigure}{.35\textwidth}
+  \centering
+  \includegraphics[width=.35\linewidth]{../greyBlackSlice.png}
+  \caption{Grau-Schwarz}
+  \label{fig:sub4}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+  \centering
+  \includegraphics[width=.35\linewidth]{../blackSlice.png}
+  \caption{Schwarz}
+  \label{fig:sub5}
+\end{subfigure}
+\caption{Teilbilder(Slices)}
+\label{fig:Teilbilder}
+\end{figure}
+\pagebreak
+\begin{flushleft}
+Aus diesen Teilbildern berechnen wir dann den jeweiligen Mittelwert und die Standardabweichung:
+\end{flushleft}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.3]{../table.png}
+\caption{Tabelle mit Mittelwert und Standartabweichung}
+\end{figure}
+\pagebreak
+
+\section{Interpretation}
+\label{chap:VERSUCH_1_INTERPRETATION}
+Da das aufgenommene Muster vorher bekannt ist, kann
+man anhand der Aufnahme die Wiedergabequalität messen. In unserem Fall sollte der
+Grauwert innerhalb jeder Stufe konstant sein. Die reale Aufnahme wird aber aufgrund von
+Bildfehlern und Sensorrauschen Abweichungen aufweisen.
+
+
+%
+% CHAPTER Versuch 2
+%
+\chapter{Versuch 2}
+\label{chap:VERSUCH_2}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_2_FRAGESTELLUNG}
+
+\begin{normalsize}
+\textbf{Fragestellung:}\newline
+Berechnung eines Mittelwert Dunkelbildes aus 10 Dunkelbildern\newline
+\textbf{Messprinzip:}\newline
+Nicht jeder Pixel einer Kamera liefert den Grauwert 0, wenn der Sensor abgedeckt ist. Das liegt
+zum einen am thermischen Rauschen der Ausleseelektronik, zum anderen am sogenannten
+Dunkelstrom, das aufgrund von Fertigungstoleranzen und von spontan durch Wärmezufuhr
+entstehenden Ladungsträgerpaaren zu einem leicht unterschiedlichen Nullpunkt jedes Pixels
+führt. Diesen pixelweisen Offset kann man durch Erstellung eines Dunkelbildes eliminieren,
+den man von jeder Aufnahme subtrahiert.\newline
+\textbf{Aufbau:}\newline
+Hierzu wird einfach die Kamera zugehalten.\newline
+\textbf{Messmittel:}\newline
+Die in diesem Versuch verwendeten Mittel:
+\begin{itemize}
+\item Logitech Webcam
+\item Python Script
+\end{itemize}
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_2_MESSWERTE}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{BlackImages/Black3.png}
+\caption{Beispiel eines Dunkelbildes}
+\end{figure}
+
+
+\section{Auswertung}
+\label{chap:VERSUCH_2_AUSWERTUNG}
+Nach der Aufnahme der 10 Dunkelbilder wird mit hilfe \hyperref[chap:APPENDIX_SOURCECODE_V2]{\textit{dieses}} Python Prgramms der Mittelwert dieser Bilder bestimmt um das unten stehende Bild als Durchschnitt zu erzeugen:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{../AverageBlackImage.png}
+\caption{Durchschnittsbild der 10 Schwarzbilder}
+\end{figure}
+
+
+\section{Interpretation}
+\label{chap:VERSUCH_2_INTERPRETATION}
+
+\begin{normalsize}
+Zunächst berechnen wird ein durchschnittliches Dunkelbild aus den 10 Dunkelbildern, damit die Korrektur genauer ist.
+Mithilfe des Dunkelbildes kann man das thermische Ausleserauschen eliminieren, das heißt es bleibt nur noch der Offset bzw. der Dunkelstrom jedes Pixels übrig. Optimalerweise sollte das Dunkelbild komplett schwarz sein, so wie bei uns. Dies bedeutet schonmal, das es keine textit{stuck pixels} gibt, auf die wir später noch eingehen werden.\newline
+\end{normalsize}
+
+%
+% CHAPTER Versuch 3
+%
+\chapter{Versuch 3}
+\label{chap:VERSUCH_3}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_3_FRAGESTELLUNG}
+
+\begin{normalsize}
+\textbf{Fragestellung:}
+\begin{itemize}
+\item 10 Weißbilder aufnehmen
+\item Ein Mittelwert Weißbildes aus 10 Weißbildern berrechnen, Dunkelbild abziehen und den Kontrast maximieren
+\end{itemize}
+\textbf{Messprinzip:}\newline
+Obwohl die einzelnen Pixel einer Kamera eine hervorragende Linearität mit der Beleuchtungsstärke aufweisen, ist ihre Sensitivität aufgrund von Fertigungstoleranzen nicht völlig
+gleich. Zusätzlich kommt noch die sogenannte Vignettierung hinzu, d.h. die Optik der Kamera
+übeträgt die Helligkeit nicht gleichmäßig auf den Sensor. Typischerweise findet man eine
+Abdunkelung des Bildes zu den Rändern hin. Zur Kompensation dieser Effekte nimmt man
+ein sogenanntes Weißbild auf.\newline
+\textbf{Aufbau:}\newline
+Anstelle des Graukeils wird nun einfach ein weißes Papier vor die Linse gelegt.\newline
+\textbf{Messmittel:}\newline
+Die in diesem Versuch verwendeten Mittel:
+\begin{itemize}
+\item Logitech Webcam
+\item Python Script
+\item Weißes Blatt Papier
+\end{itemize}
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_3_MESSWERTE}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{WhiteImages/White3.png}
+\caption{Beispiel eines Weißbildes}
+\end{figure}
+
+\section{Auswertung}
+\label{chap:VERSUCH_3_AUSWERTUNG}
+Nach der Aufnahme der 10 Weißbilder wird, genau wie bei den Schwarzbildern auch, aus dem Mittelwert dieser ein neues Bild erstellt. \hyperref[chap:APPENDIX_SOURCECODE_V3]{\textit{Dies}} ist der Code der zur Erstellung des folgenden Bildes verwendet wurde.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{../AverageWhiteImage.png}
+\caption{Durchschnittsbild der 10 Weißbilder}
+\includegraphics[scale=0.5]{../AverageWhiteImageMaxContrast.png}
+\caption{Kontrastmaximiertes Weißbild}
+\end{figure}
+\pagebreak
+\section{Interpretation}
+\label{chap:VERSUCH_3_INTERPRETATION}
+
+\begin{normalsize}
+Durch Division durch das Weissbild kann man
+die unterschiedlichen Sensitivitäten der einzelnen Pixel herausrechnen. Leider hängt das
+Weißbild vom eingestellten Fokus des Kameraobjektives ab, d.h. im Prinzip braucht man für
+jede Fokuseinstellung ein eigenes Weißbild. In unserem Fall bedeutet das, dass das Weißbild
+in der gleichen Entfernung wie das zu korrigierende Bild aufgenommen werden muss.
+Vom Gesichtspunkt der Kalibrierung her nehmen wir mit dem Weißbild einen zweiten Punkt
+der Kennlinie jeden einzelnen Pixels auf. Zusammen mit dem Dunkelbild haben wir damit
+die Kennlinie für alle Pixel gleichzeitig und eindeutig bestimmt: wir wissen an jeder Stelle des
+Bildes die Steigung und den Nullpunkt und können durch Subtraktion des Dunkelbildes und
+Division durch das Weißbild die tatsächliche Intensität des einfallenden Lichtes bestimmen.
+Bei dem kontrastmaximierten Bild sind deutliche Kontraste zu sehen. Dies könnte an einer Reflektion einer Lampe liegen, die während der Aufnahme auf das Papier geleuchtet hat.\newline
+\end{normalsize}
+
+%
+% CHAPTER Versuch 4
+%
+\chapter{Versuch 4}
+\label{chap:VERSUCH_4}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_4_FRAGESTELLUNG}
+\begin{normalsize}
+\textbf{Fragestellung:}
+\begin{itemize}
+\item Überprüfung des Dunkelbilds auf \textit{stuck} und \textit{hot pixels} und das Weißbild auf \textit{dead pixels}
+\item Korrektur des Grauwertbildes mit den Weiß- und Dunkelbildern aus den vorherigen Aufgaben
+\end{itemize}
+\textbf{Messprinzip:}\newline
+Stuck und hot pixels entdeckt man am
+einfachsten im Dunkelbild, bei dem diese Pixel als helle Punkte auffallen. Dead Pixels findet
+man im Weißbild, wo sie als dunkle Punkte auffallen.\newline
+\textbf{Aufbau:}\newline
+Bei diesem Versuch gab es keinen Messaufbau.\newline
+\textbf{Messmittel:}\newline
+Die in diesem Versuch verwendeten Mittel:
+\begin{itemize}
+\item Dunkelbild
+\item Weißbild
+\item Python Script
+\end{itemize}
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_4_MESSWERTE}
+\begin{normalsize}
+In diesem Versuch werden keine neuen Messungen getätigt. Es werden lediglich bereits erstellte Bilder aus den vorherigen Versuchen verwendet.
+\end{normalsize}
+
+\section{Auswertung}
+\label{chap:VERSUCH_4_AUSWERTUNG}
+\begin{normalsize}
+Wir haben leider vergeblich nach \textit{stuck pixel} sowie \textit{hot pixel} in unseren Bildern gesucht.\newline
+Der Quellcode für diese Aufgabe ist \hyperref[chap:APPENDIX_SOURCECODE_V4]{\textit{hier}} zu finden. 
+\end{normalsize}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{../GreyScaleCorrectedWithBlackWhiteImage.png}
+\caption{Einfach korririerter Grauwertkeil}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{../2timesCorrectedGreyScale.png}
+\caption{Doppelt korririerter Grauwertkeil}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{../tableCorrected.png}
+\caption{Tabelle des korrigierten Grawertkeils}
+\end{figure}
+
+\section{Interpretation}
+\label{chap:VERSUCH_4_INTERPRETATION}
+Je nach Qualität des Bildsensors entstehen beim Fertigungsprozess eine Anzahl von funktionsuntüchtigen Pixeln. Es gibt dead pixels, die immer auf ihrem niedrigsten Wert steckenbleiben,
+stuck pixels, die immer auf ihrem Maximalwert bleiben, und sogenannte hot pixels, die bei längeren Belichtungszeiten in die Sättigung gehen.  Je nach Anwendung werden diese Pixelwerte im zu korrigierenden Bild durch Interpolation aus ihren Nachbarwerten ersetzt, so dass sie nicht mehr auffallen.\newline
+
+%
+% CHAPTER Anhang
+%
+\renewcommand\thesection{A.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\chapter*{Anhang}
+\label{chap:APPENDIX}
+\addcontentsline{toc}{chapter}{Anhang}
+%\setcounter{chapter}{0}
+\addtocounter{chapter}{1}
+\setcounter{section}{0}
+
+\section{Quellcode}
+\label{chap:APPENDIX_SOURCECODE}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code zum aufnehmen der Bilder]{../CapureImage.py}
+\pagebreak
+
+\subsection{Quellcode Versuch 1}
+\label{chap:APPENDIX_SOURCECODE_V1}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code für Aufgabe 1]{../Task1.py}
+\pagebreak
+
+\subsection{Quellcode Versuch 2}
+\label{chap:APPENDIX_SOURCECODE_V2}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code für Aufgabe 2]{../Task2.py}
+
+\pagebreak
+
+\subsection{Quellcode Versuch 3}
+\label{chap:APPENDIX_SOURCECODE_V3}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code für Aufgabe 3]{../Task3.py}
+\pagebreak
+
+\subsection{Quellcode Versuch 4}
+\label{chap:APPENDIX_SOURCECODE_V4}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code für Aufgabe 4]{../ImproveImage.py}
+\pagebreak
+
+%\section{Messergebnisse}
+%\label{chap:APPENDIX_MEASUREMENT_SOURCE}
+
+%
+% Literaturverzeichnis
+%
+\include{appendix/bibliography}
+
+\end{document}
+%------------------------------------
+% ╔═╗╔╗╔╔╦╗  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗
+% ║╣ ║║║ ║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║ 
+% ╚═╝╝╚╝═╩╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩ 
+%------------------------------------

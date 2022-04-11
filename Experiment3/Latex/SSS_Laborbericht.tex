@@ -1,0 +1,435 @@
+%---------------
+%╔═╗╔═╗╔╦╗╦ ╦╔═╗
+%╚═╗║╣  ║ ║ ║╠═╝
+%╚═╝╚═╝ ╩ ╚═╝╩  
+%---------------
+
+% language setup
+\newcommand{\docLanguage}{ngerman}
+%\newcommand{\docLanguage}{english}
+
+% DOCUMENT SETUP
+\documentclass[12pt, oneside, a4paper, \docLanguage]{report}
+\usepackage[left=3cm, 
+			right=2.5cm, 
+			top=2.5cm, 
+			bottom=2.5cm, 
+			includehead, 
+			includefoot]{geometry}
+
+% line spacing
+\usepackage{setspace}
+\setstretch{1,25} % 15/12 --> 1.25
+
+% encoding setup
+% T1 font encoding for languages that use a latin alphabet
+\usepackage[T1]{fontenc} 
+
+% enhanced input encoding handling - utf8 for äÄüÜöÖß...
+\usepackage[utf8]{inputenc}
+
+%de­fines Adobe Times Ro­man as de­fault text font
+\usepackage{mathptmx}
+\usepackage{times} % needed for acronym package
+
+%PDF linking package
+\usepackage[hidelinks]{hyperref}
+
+% Language Setup
+\usepackage[\docLanguage]{babel}
+% after babel - set chapter string
+\AtBeginDocument{\renewcommand{\chaptername}{}}
+
+% language specific bibliography style
+\usepackage[numbers, square]{natbib}
+%\setcitestyle{square,aysep={},yysep={;}}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{\docLanguage}
+% bliographystyle setup
+% babel specific: babplain, babplai3, babalpha, babunsrt, bababbrv, bababbr3
+\bibliographystyle{babunsrt}
+
+
+% enumeration
+\usepackage{enumitem}
+% tabular extension tabularx
+\usepackage{tabularx}
+
+% math packages
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{MnSymbol}
+
+
+%special characters
+\usepackage{amssymb}
+\usepackage{upgreek,textgreek}
+
+% acronym package
+\usepackage[printonlyused, footnote]{acronym}
+
+% breakable text in \seqsplit{}
+\usepackage{seqsplit}
+
+% \textmu
+\usepackage{textcomp}
+
+% package provides a way to compile sections of a document using the same preamble as the main document
+\usepackage{subfiles}
+
+% driver-independent color extension - used by listings,tabularx
+\usepackage[usenames,dvipsnames,table,xcdraw]{xcolor}
+
+% -- SYNTAX HIGHLIGHTING --
+\usepackage{listings}
+%\input{cfgs/listings/listings_def_lang_bash-cmd.tex} % adds style BASH_CMD
+%\input{cfgs/listings/listings_def_lang_bash-script.tex} % adds style BASH_SCRIPT
+\input{cfgs/listings/listings_def_lang_latex.tex} % adds style LATEX
+%\input{cfgs/listings/listings_def_lang_matlab.tex} % adds style MATLAB
+\input{cfgs/listings/listings_def_lang_python.tex} % adds style PYTHON
+%\input{cfgs/listings/listings_def_lang_c++.tex} % adds style CPP
+%\input{cfgs/listings/listings_def_lang_c.tex} % adds style C
+%\input{cfgs/listings/listings_def_lang_json.tex} % adds style JSON
+
+% HEADLINE CFG
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{lastpage}
+\usepackage{ifthen}
+\setlength{\headheight}{1.5cm}
+%\pagestyle{fancy} % All pages have headers and footers
+% override plain page style for \part, \chapter or 
+% \maketitle, which implicit specifies plain page style
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_plain.tex}
+% set list pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_preface.tex}
+% set default pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_onepage.tex}
+%\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_twopage.tex}
+
+\renewcommand{\chaptermark}[1]{\markright{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% PICTURE CFG 
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage[list=true,listformat=simple]{subcaption}
+% floating prevention packages
+\usepackage{float}    % used with [H] positioning parameter
+\usepackage{placeins} % \FloatBarrier 
+% tikz packages
+\usepackage{tikz}
+\usepackage{standalone}
+\usepackage{pgfplots}
+
+% csv 
+\usepackage{csvsimple}
+
+% include only specified tex files - uncommend here
+\includeonly{preface/cover,
+             preface/abstract,
+             preface/tableofcontents,
+             preface/listoffigures,
+             preface/listoftables,
+             preface/lstlistoflistings,
+             appendix/bibliography}
+
+%-------------------
+%╔═╗╔╦╗╦═╗╦╔╗╔╔═╗╔═╗
+%╚═╗ ║ ╠╦╝║║║║║ ╦╚═╗
+%╚═╝ ╩ ╩╚═╩╝╚╝╚═╝╚═╝
+%-------------------
+\newcommand{\strLecture}{Signale, Systeme und Sensoren}
+\newcommand{\strDate}{\today}
+\newcommand{\strAuthorA}{Tim Koehler}
+\newcommand{\strAuthorB}{Roland Burke}
+%\newcommand{\strAuthorC}{C. Author}
+\newcommand{\strAuthorAEmail}{tim.koehler@htwg-konstanz.de}
+\newcommand{\strAuthorBEmail}{roland.burke@htwg-konstanz.de}
+%\newcommand{\strAuthorCEmail}{cauthor@htwg-konstanz.de}
+% Versuchsbeschreibung 
+\newcommand{\strTopic}{Fourieranalyse und Akustik}
+\newcommand{\strAbstract}{In diesem Versuch wird die Fourieranalyse auf akustische Signale und Systeme angewandt.\newline
+\newline
+Aufgaben in diesem Versuch: 
+\begin{enumerate}
+
+\item \textbf{Bestimmung der Tonhöhe eines akustischen Signals}\newline
+In der ersten von zwei Teilaufgabe analysieren wir das Signal einer Mundharmonika.
+Zum Einsatz kommt hierbei die \textit{Efficient Fast Fourier Transform (FFT) algorithm} der uns aus der \textit{Numpy}
+Bibliothek zur verfügung gestellt wird.
+\item \textbf{Frequenzgang von Lautsprechern}\newline
+Bei dem zweiten und letzten Versuch verwenden wir einen Frequenzgenerator um eine reihe von verschiedenen Tönen in verschiedenen Frequenzen zu
+erzeugen. Diese Töne werden dann über einen Lautsprecher höhrbar gemacht und mit einem Mikrofon für die weitere Verarbeitung aufgenommen.
+\end{enumerate}
+}
+% hyperref customization
+\hypersetup{
+	pdftitle     = {\strTopic}, % title
+	pdfsubject   = {\strLecture}, % subject of the document
+	pdfauthor    = {\strAuthorA, \strAuthorB}, % author
+	pdfkeywords  = {}, % list of keywords
+	pdfcreator   = {}, % creator of the document
+	pdfproducer  = {}, % producer of the document
+	colorlinks   = false, % false: boxed links; true: colored links
+	linkcolor    = red, % color of internal links (change box color with linkbordercolor)
+    citecolor    = green, % color of links to bibliography
+    filecolor    = magenta, % color of file links
+    urlcolor     = cyan, % color of external links
+	%bookmarks    = true, % show bookmarks bar?
+	unicode	     = true, % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar   = true, % show Acrobat’s toolbar?
+	pdfmenubar   = true, % show Acrobat’s menu?
+    pdffitwindow = false, % window fit to page when opened
+	pdfnewwindow = true % links in new PDF window
+}
+
+%-----------------------------------------
+% ╔╗ ╔═╗╔═╗╦╔╗╔  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗ 
+% ╠╩╗║╣ ║ ╦║║║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║  
+% ╚═╝╚═╝╚═╝╩╝╚╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩  
+%-----------------------------------------
+
+\begin{document}
+\pagenumbering{Roman} 
+
+\setcounter{section}{0}
+\include{preface/cover}
+
+\include{preface/abstract}
+\clearpage
+
+%
+% TABLE OF CONTENTS
+%
+\include{preface/tableofcontents}
+
+%
+% Abbildungsverzeichnis
+%
+\include{preface/listoffigures}
+
+%
+% Tabellenverzeichnis
+%
+%\include{preface/listoftables}
+
+%
+% Listingverzeichnis
+%
+\include{preface/lstlistoflistings}
+
+
+%--------------------------
+% ╔═╗╦ ╦╔═╗╔═╗╔╦╗╔═╗╦═╗╔═╗ 
+% ║  ╠═╣╠═╣╠═╝ ║ ║╣ ╠╦╝╚═╗ 
+% ╚═╝╩ ╩╩ ╩╩   ╩ ╚═╝╩╚═╚═╝ 
+%--------------------------
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{default}
+%
+% CHAPTER Einleitung
+%
+\chapter{Einleitung}
+\label{chap:EINL}
+\begin{normalsize}
+Wir Menschen nehmen Klänge und Geräusche tagtäglich wahr. Erzeugt werden diese zum Beispiel beim sprechen oder spielen eines Instrumentes.
+Diese bestehen meist aus verschiedenen Frequenzen, welche man mit Hilfe einer Fourier Transformation bestimmen kann. Im folgenden werden wir den Klang der beim Spielen einer Mundharmonika ensteht, in seine einzelnen Frequenzen zerlegen und die Grundfrequenz bestimmen. Desweiteren untersuchen wir, wie gut ein großer und ein kleiner Lautsprecher Töne verschiedener Frequenzen wiedergeben.
+\end{normalsize}
+
+%
+% CHAPTER Versuch 1
+%
+\chapter{Versuch 1}
+\label{chap:VERSUCH_1}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_1_FRAGESTELLUNG}
+\begin{normalsize}
+In Versuch Eins geht es darum einen einzelnen Ton einer Mundharmonika mit einem Mikrofon aufzunehmen.
+Das daraus resultierende Signal soll dann in sein Spektrum zerlegt und dargestellt werden.\newline
+Hierbei kommen folgende Dinge zum Einsatz: Mundharmonika, Mikrofon, PicoScope\newline
+\begin{figure}[H]
+\centering
+\includegraphics[angle=270,width=0.6\textwidth]{../Picture1.jpg}
+\caption{Messaufbau für Versuch 1}
+\end{figure}
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_1_MESSWERTE}
+\begin{figure}[H]
+\centering
+\csvautotabular{../Data/mund_small.csv}
+\caption{Ausschnitt der Mundharmonika Messdaten}
+\end{figure}
+\pagebreak
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../MundSignal.png}
+\caption{Signal der Mundharmonika}
+\end{figure}
+	
+\section{Auswertung}
+\label{chap:VERSUCH_1_AUSWERTUNG}
+\begin{normalsize}
+Aus dem oben beschriebenen Signal ergeben sich folgende Werte:
+\end{normalsize}
+\begin{center}
+	\begin{tabular}{ c c }
+	\textbf{Grundperiode} & 1,43ms \\ 
+	\textbf{Grundfrequenz} & $\frac{1}{0,00143}\approxeq700Hz$ \\  
+	\textbf{Signaldauer} & von -25ms bis +25ms $\rightarrow$ 50ms \\ 
+	\textbf{Abtastfrequenz} & $\frac{1}{5µs}$ = 200kHz \\ 
+	\textbf{Signallänge} & $\frac{50ms}{0,005ms}$ = 10000\\
+	\textbf{Abtastintervall} & $\Delta t = 5µs$ \\ 
+	\end{tabular}
+\end{center}
+\pagebreak
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../MundTransformed.png}
+\caption{FFT des Mundharmonika Signals}
+\end{figure}
+\begin{normalsize}
+Um die x-Achse richtig darzustellen muss zuvor folgende Kalkulation stattgefunden haben:
+\end{normalsize}
+\begin{align*}
+f = \frac{n}{M * \Delta t}
+\end{align*}
+
+
+\section{Interpretation}
+\label{chap:VERSUCH_1_INTERPRETATION}
+\begin{normalsize}
+Im Schaubild \textit{Abbildung: 2.4} ist sehr schön zu sehen dass sich die von uns zuvor berechnete Grundfrequenz
+bei ca. 700Hz befindet. Da es sich um ein periodisches Signal handelt sind die folgenden Harmonischen bei vielfachen von 700Hz zu sehen.
+Auf Grund von Messungenauigkeiten und Rundungsfehlern weichen diese Frequenzen im höheren Bereich etwas ab. 
+\end{normalsize}
+
+%
+% CHAPTER Versuch 2
+%
+\chapter{Versuch 2}
+\label{chap:VERSUCH_2}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_2_FRAGESTELLUNG}
+\begin{normalsize}
+In Versuch 2 geht es darum die Amplitude und die Phasenverschiebung von 2 Lautsprechern für folgende Frequenzen zu bestimmen:\newline
+Frequenzen: f = 100, 200, 300, 400, 500, 700, 850 Hz, 1, 1.2, 1.5, 1.7, 2 kHz, 3, 4, 5, 6, 10 kHz.\newline
+Desweiteren sollen wir für beide Lautsprecher mithilfe von matplotlib ein Bode-Diagramm erstellen und uns überlegen, warum diese die gefundene Form aufweisen.\newline
+Hierbei kommen folgende Dinge zum Einsatz:\newline
+Mikrofon, PicoScope, 2 Lautsprecher, Frequenzgenerator: Sinus, u1ss = 1.5 V\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{../MeasuringBuilding.png}
+\caption{Messaufbau}
+\end{figure}
+\end{normalsize}
+
+\section{Messwerte}
+\label{chap:VERSUCH_2_MESSWERTE}
+\begin{normalsize}
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../MeasurementPlotBigSpeaker.png}
+\caption{Messwerte des großen Lautsprechers}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../MeasurementPlotSmallSpeaker.png}
+\caption{Messwerte des kleinen Lautsprechers}
+\end{figure}
+\end{normalsize}
+
+\section{Auswertung}
+\label{chap:VERSUCH_2_AUSWERTUNG}
+\begin{normalsize}
+Aus den oben angegebenen Werten haben wir die Amplitude und den Phasenwinkel für die jeweilige Frequenz wie folgt berechnet:
+\begin{center}
+	\begin{tabular}{ l l }
+	\textbf{Amplitude:} & $20 * log_{10}(f)$ \\ 
+	\textbf{Phasenwinkel:} & $\varphi H = - \Delta t * f * 360^\circ$ \\  
+	\end{tabular}
+\end{center}
+Die x-Achsen der beiden Bode-Diagramme haben wir mithilfe der Python Funktion\newline
+semilogx() logarithmiert.
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../BodeDiagramBigSpeaker.png}
+\caption{Bode Diagramm des großen Lautsprechers}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../BodeDiagramSmallSpeaker.png}
+\caption{Bode Diagramm des kleinen Lautsprechers}
+\end{figure}
+\end{normalsize}
+
+\newpage
+
+\section{Interpretation}
+\label{chap:VERSUCH_2_INTERPRETATION}
+\begin{normalsize}
+Laut dem Datenblatt liegt der Frequenzbereich des Mikrofons zwischen ca. 70Hz und ca. 13kHz. Entsprechend der abgebildeten Kurve für den Frequenzbereich nimmt das Mikrofon am Besten Frequenzen von ca. 100Hz bis ca. 10kHz auf.\newline
+Bei beiden Lautsprechern haben wir einen Peak der Amplitude
+im niedrigen bis mittleren Frequenzbereich. Dies liegt wahrscheinlich daran, dass das Mikrofon gemäß dem Datenblatt bei geringer Distanz zur Audioquelle Bassfrequenzen besonders gut aufnimmt. Bei dem größeren Lautsprecher ist der Peak bei einer niedrigeren Frequenz als beim kleinen Lautsprecher, woraus
+folgt, dass der größere Lautsprecher Bassfrequenzen besser wiedergeben kann.\newline
+Bei höheren Frequenzen fällt die Amplitude beim größeren Lautsprecher tendenziell ab, beim kleineren hingegen steigt sie sogar nochmal kurz an, was bedeutet, dass der kleinere Lautsprecher hohe Frequenzen besser wiedergeben kann.
+\end{normalsize}
+
+%
+% CHAPTER Anhang
+%
+\renewcommand\thesection{A.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\chapter*{Anhang}
+\label{chap:APPENDIX}
+\addcontentsline{toc}{chapter}{Anhang}
+%\setcounter{chapter}{0}
+\addtocounter{chapter}{1}
+\setcounter{section}{0}
+
+\section{Quellcode}
+\label{chap:APPENDIX_SOURCECODE}
+
+\subsection{Quellcode Versuch 1}
+\label{chap:APPENDIX_SOURCECODE_V1}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 1]{../task1.py}
+
+\pagebreak
+
+\subsection{Quellcode Versuch 2}
+\label{chap:APPENDIX_SOURCECODE_V2}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 2]{../task2.py}
+
+
+\section{Messergebnisse}
+\label{chap:APPENDIX_MEASUREMENT_SOURCE}
+\begin{normalsize}
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../MeasurementBigSpeaker.png}
+\caption{Messwerte des großen Lautsprechers}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.9\textwidth]{../MeasurementSmallSpeaker.png}
+\caption{Messwerte des kleinen Lautsprechers}
+\end{figure}
+\end{normalsize}
+
+%
+% Literaturverzeichnis
+%
+\include{appendix/bibliography}
+
+\end{document}
+%------------------------------------
+% ╔═╗╔╗╔╔╦╗  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗
+% ║╣ ║║║ ║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║ 
+% ╚═╝╝╚╝═╩╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩ 
+%------------------------------------

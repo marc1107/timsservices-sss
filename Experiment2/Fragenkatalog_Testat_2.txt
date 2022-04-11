@@ -1,0 +1,101 @@
+Fragenkatalog Testat 2
+======================
+
+
+1. Wofür braucht man ein Dunkelbild?
+
+Nicht jeder Pixel einer Kamera liefert den Grauwert 0, wenn der Sensor abgedeckt ist. Das liegt zum einen am thermischen Rauschen der Ausleseelektronik, zum anderen am sogenannten Dunkelstrom,
+das aufgrund von Fertigungstoleranzen und von spontan durch Wärmezufuhr entstehenden Ladungsträgerpaaren zu einem leicht unterschiedlichen Nullpunkt jedes Pixels führt.
+Diesen pixelweisen Offset kann man durch Erstellung eines Dunkelbildes eliminieren, den man von jeder Aufnahme subtrahiert. Dadurch wird ein Großteil des Rauschens aus der Aufnahme entfernt.
+Achtung: der Offset jedes Pixels hängt stark von der Belichtungszeit ab, d.h. im Prinzip braucht man für jede unterschiedliche Belichtungszeit ein eigenes Dunkelbild!
+Deshalb ist es wichtig, bei der Aufnahme des Dunkelbildes die Belichtungsparameter konstant auf den gleichen Wert der zu korrigierenden Aufnahme zu stellen.
+Vom Gesichtspunkt der Kalibrierung her bestimmen wir mit dem Dunkelbild alle Nullpunkte jeden einzelnen Pixels des gesamtem Sensors.
+
+
+2. Was bedeutet Vignettierung?
+
+Obwohl die einzelnen Pixel einer Kamera eine hervorragende Linearität mit der Beleuchtungsstärke aufweisen, ist ihre Sensitivität aufgrund von Fertigungstoleranzen nicht völlig gleich.
+Zusätzlich kommt noch die sogenannte Vignettierung hinzu, d.h. die Optik der Kamera übeträgt die Helligkeit nicht gleichmäßig auf den Sensor. Typischerweise findet man eine Abdunkelung des Bildes zu den Rändern hin.
+Zur Kompensation dieser Effekte nimmt man ein sogenanntes Weißbild auf.
+
+
+3. Wie findet man die "dead pixels" einer Kamera?
+
+Je nach Qualität des Bildsensors entstehen beim Fertigungsprozess eine Anzahl von funktionsuntüchtigen Pixeln.
+Es gibt dead pixels, die immer auf ihrem niedrigsten Wert steckenbleiben, stuck pixels, die immer auf ihrem Maximalwert bleiben, und sogenannte hot pixels, die bei längeren Belichtungszeiten in die Sättigung gehen.
+Stuck und hot pixels entdeckt man am einfachsten im Dunkelbild, bei dem diese Pixel als helle Punkte auffallen. Dead Pixels findet man im Weißbild, wo sie als dunkle Punkte auffallen.
+Je nach Anwendung werden diese Pixelwerte im zu korrigierenden Bild durch Interpolation aus ihren Nachbarwerten ersetzt, so dass sie nicht mehr auffallen.
+
+
+4. Wie sehen die Fourierkoeffizienten der zweiseitigen trigonometrischen Fourierreihe für 
+x(t) \= a cos(2 omega t) aus?
+a (nicht sicher)
+
+
+5. Wie viele Terme hat die zweiseitige trigonometrische Fourierreihe von 1 + sin t + 
+3 cos 2t?
+3 (nicht sicher)
+
+
+6. Welche Symmetrien hat die zweiseitige Fourierreihe?
+Y-Achsensymmetrie
+
+
+7. Aus welchen Grundsignalen besteht die komplexe Fourierreihe?
+sin(x) und cos(x)
+
+
+8. Aus welchen Summentermen besteht die harmonische Form der Fourierreihe?
+A(k)*cos(kωt) + B(k)*sin(kωt)
+
+
+9. Welchen Vorteil hat die trigonometrische Form der Fourierreihe gegenüber der
+harmonischen Form?
+Die unbekannten Fourierkoeffizienten können analytisch berechnet werden
+
+
+10. Was ist der Unterschied zwischen der Menge der zweidimensionalen Vektoren und den
+komplexen Zahlen?
+
+nur in 3 und 8 dimensionen ???
+
+
+11. Was ist der Unterschied zwischen dem Skalarprodukt in einem zweidimensionalen
+Vektorraum und der Multiplikation zweier komplexer Zahlen?
+
+Es kommt eine komplexe Zahl raus.
+
+
+12. Was ist die Phase einer Sinusschwingung?
+0° (nicht sicher)
+
+
+13. Was haben komplexe Zahlen mit Sinusschwingungen zu tun?
+Komplexe Zahlen haben von Natur aus 2 Freiheitsgerade, Real- und Imgainärtiel, die sich zu einer eleganten Darstellung der Fourierreihe eignen.
+
+
+14. Wie berechnet sich die Frequenz einer Sinusschwingung, das aus der Summe einer Sinus-
+und einer Cosinusfunktion gleicher Frequenz entsteht?
+
+15. Was ist ein gerades Signal?
+Ein gerades Signal ist Y-Achsen Symmetrisch: f(-t) = f(t)
+
+
+16. Was ist eine δ-Impulsfolge?
+Eine Folge von Nadelimpulsen. Ein Nadelimpuls ist unendlich hoch und unendlich schmal.
+
+
+17. Wie unterscheidet sich das Spektrum periodischer Rechteckimpulse von einer
+Gauß-Impulsfolge und warum?
+
+18. Was ist die Regellage?
+Bei einem zweiseitigen Amplitudenspektrum sqrt(a²(k) + b²(k)) ist die Regellage die positive Seite.
+
+
+19. Welches der unten aufgeführten Signale enthält keine unendlich hohen Frequenzen?
+
+???
+
+
+20. Wie unterscheiden sich die Spektren von schnell und langsam veränderlichen Signalen?
+Bei schnell veänderlichen Signale ist die Frequenz höher als bei langsam veränderlichen Signalen

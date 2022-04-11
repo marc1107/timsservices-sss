@@ -1,0 +1,478 @@
+%---------------
+%╔═╗╔═╗╔╦╗╦ ╦╔═╗
+%╚═╗║╣  ║ ║ ║╠═╝
+%╚═╝╚═╝ ╩ ╚═╝╩  
+%---------------
+
+% language setup
+\newcommand{\docLanguage}{ngerman}
+%\newcommand{\docLanguage}{english}
+
+% DOCUMENT SETUP
+\documentclass[12pt, oneside, a4paper, \docLanguage]{report}
+\usepackage[left=3cm, 
+			right=2.5cm, 
+			top=2.5cm, 
+			bottom=2.5cm, 
+			includehead, 
+			includefoot]{geometry}
+
+% line spacing
+\usepackage{setspace}
+\setstretch{1,25} % 15/12 --> 1.25
+
+% encoding setup
+% T1 font encoding for languages that use a latin alphabet
+\usepackage[T1]{fontenc} 
+
+% enhanced input encoding handling - utf8 for äÄüÜöÖß...
+\usepackage[utf8]{inputenc}
+
+%de­fines Adobe Times Ro­man as de­fault text font
+\usepackage{mathptmx}
+\usepackage{times} % needed for acronym package
+
+%PDF linking package
+\usepackage[hidelinks]{hyperref}
+
+% Language Setup
+\usepackage[\docLanguage]{babel}
+% after babel - set chapter string
+\AtBeginDocument{\renewcommand{\chaptername}{}}
+
+% language specific bibliography style
+\usepackage[numbers, square]{natbib}
+%\setcitestyle{square,aysep={},yysep={;}}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{\docLanguage}
+% bliographystyle setup
+% babel specific: babplain, babplai3, babalpha, babunsrt, bababbrv, bababbr3
+\bibliographystyle{babunsrt}
+
+
+% enumeration
+\usepackage{enumitem}
+% tabular extension tabularx
+\usepackage{tabularx}
+
+% math packages
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{MnSymbol}
+
+
+%special characters
+\usepackage{amssymb}
+\usepackage{upgreek,textgreek}
+
+% acronym package
+\usepackage[printonlyused, footnote]{acronym}
+
+% breakable text in \seqsplit{}
+\usepackage{seqsplit}
+
+% \textmu
+\usepackage{textcomp}
+
+% package provides a way to compile sections of a document using the same preamble as the main document
+\usepackage{subfiles}
+
+% driver-independent color extension - used by listings,tabularx
+\usepackage[usenames,dvipsnames,table,xcdraw]{xcolor}
+
+% -- SYNTAX HIGHLIGHTING --
+\usepackage{listings}
+%\input{cfgs/listings/listings_def_lang_bash-cmd.tex} % adds style BASH_CMD
+%\input{cfgs/listings/listings_def_lang_bash-script.tex} % adds style BASH_SCRIPT
+\input{cfgs/listings/listings_def_lang_latex.tex} % adds style LATEX
+%\input{cfgs/listings/listings_def_lang_matlab.tex} % adds style MATLAB
+\input{cfgs/listings/listings_def_lang_python.tex} % adds style PYTHON
+%\input{cfgs/listings/listings_def_lang_c++.tex} % adds style CPP
+%\input{cfgs/listings/listings_def_lang_c.tex} % adds style C
+%\input{cfgs/listings/listings_def_lang_json.tex} % adds style JSON
+
+% HEADLINE CFG
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{lastpage}
+\usepackage{ifthen}
+\setlength{\headheight}{1.5cm} 
+%\pagestyle{fancy} % All pages have headers and footers
+% override plain page style for \part, \chapter or 
+% \maketitle, which implicit specifies plain page style
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_plain.tex}
+% set list pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_preface.tex}
+% set default pagestyle
+\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_onepage.tex}
+%\input{cfgs/fancyhdr/fancyhdr_pagestyle_default_twopage.tex}
+
+\renewcommand{\chaptermark}[1]{\markright{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% PICTURE CFG 
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage[list=true,listformat=simple]{subcaption}
+% floating prevention packages
+\usepackage{float}    % used with [H] positioning parameter
+\usepackage{placeins} % \FloatBarrier 
+% tikz packages
+\usepackage{tikz}
+\usepackage{standalone}
+\usepackage{pgfplots}
+
+% csv 
+\usepackage{csvsimple}
+
+% include only specified tex files - uncommend here
+\includeonly{preface/cover,
+             preface/abstract,
+             preface/tableofcontents,
+             preface/listoffigures,
+             preface/listoftables,
+             preface/lstlistoflistings,
+             appendix/bibliography}
+
+%-------------------
+%╔═╗╔╦╗╦═╗╦╔╗╔╔═╗╔═╗
+%╚═╗ ║ ╠╦╝║║║║║ ╦╚═╗
+%╚═╝ ╩ ╩╚═╩╝╚╝╚═╝╚═╝
+%-------------------
+\newcommand{\strLecture}{Signale, Systeme und Sensoren}
+\newcommand{\strDate}{\today}
+\newcommand{\strAuthorA}{Tim Koehler}
+\newcommand{\strAuthorB}{Roland Burke}
+%\newcommand{\strAuthorC}{C. Author}
+\newcommand{\strAuthorAEmail}{tim.koehler@htwg-konstanz.de}
+\newcommand{\strAuthorBEmail}{roland.burke@htwg-konstanz.de}
+%\newcommand{\strAuthorCEmail}{cauthor@htwg-konstanz.de}
+% Versuchsbeschreibung 
+\newcommand{\strTopic}{Aufbau eines einfachen Spracherkenners}
+\newcommand{\strAbstract}{\newline
+In diesem Versuch wird ein einfacher Spracherkenner aufgebaut, der z.B. zur Steuerung eines
+Staplers in einem Hochregallager dienen könnte. Es reichen hierzu die Erkennung der vier einfachen Befehle ”Hoch”, ”Tief”, ”Links” und ”Rechts”
+\newline
+\newline
+Aufgaben in diesem Versuch: 
+
+\begin{enumerate}
+\item \textbf{Fourieranalyse lang andauernder Signale}\newline
+Aufnahme eines beliebigen Wortes mit einem Mikrofon. Durch eine sogenannte Triggerfunktion wird das Signal erst dargestellt
+wenn eine vorgegebene Schwelle überschritten wird. Anschließend wird das Amplitudensprktrum des Signals dargestellt.\newline
+Im letzten Abschnitt des ersten Teils wird dann die Windowing Methode implementiert.
+\item \textbf{Spracherkennung}\newline
+Der zweite Teil beschäftigt sich mit der Entwicklung eines Spracherkenners.\newline
+Dazu werden einige Aufnahmen der oben gennenaten Worte gemacht und daraus Prototypen erstellt.
+Anschließend wird durch Korrelation der Spektren bestimmt welches der Prototypen Worte am besten zu dem Test Signal passt.
+\end{enumerate}
+}
+% hyperref customization
+\hypersetup{
+	pdftitle     = {\strTopic}, % title
+	pdfsubject   = {\strLecture}, % subject of the document
+	pdfauthor    = {\strAuthorA, \strAuthorB}, % author
+	pdfkeywords  = {}, % list of keywords
+	pdfcreator   = {}, % creator of the document
+	pdfproducer  = {}, % producer of the document
+	colorlinks   = false, % false: boxed links; true: colored links
+	linkcolor    = red, % color of internal links (change box color with linkbordercolor)
+    citecolor    = green, % color of links to bibliography
+    filecolor    = magenta, % color of file links
+    urlcolor     = cyan, % color of external links
+	%bookmarks    = true, % show bookmarks bar?
+	unicode	     = true, % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar   = true, % show Acrobat’s toolbar?
+	pdfmenubar   = true, % show Acrobat’s menu?
+    pdffitwindow = false, % window fit to page when opened
+	pdfnewwindow = true % links in new PDF window
+}
+
+%-----------------------------------------
+% ╔╗ ╔═╗╔═╗╦╔╗╔  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗ 
+% ╠╩╗║╣ ║ ╦║║║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║  
+% ╚═╝╚═╝╚═╝╩╝╚╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩  
+%-----------------------------------------
+
+\begin{document}
+\pagenumbering{Roman} 
+
+\setcounter{section}{0}
+\include{preface/cover}
+
+\include{preface/abstract}
+\clearpage
+
+%
+% TABLE OF CONTENTS
+%
+\include{preface/tableofcontents}
+
+%
+% Abbildungsverzeichnis
+%
+\include{preface/listoffigures}
+
+%
+% Tabellenverzeichnis
+%
+%\include{preface/listoftables}
+
+%
+% Listingverzeichnis
+%
+\include{preface/lstlistoflistings}
+
+
+%--------------------------
+% ╔═╗╦ ╦╔═╗╔═╗╔╦╗╔═╗╦═╗╔═╗ 
+% ║  ╠═╣╠═╣╠═╝ ║ ║╣ ╠╦╝╚═╗ 
+% ╚═╝╩ ╩╩ ╩╩   ╩ ╚═╝╩╚═╚═╝ 
+%--------------------------
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{default}
+%
+% CHAPTER Einleitung
+%
+\chapter{Einleitung}
+\label{chap:EINL}
+\begin{normalsize}
+Wie oben bereits erwähnt wird in diesem Versuch ein einfacher Spracherkenner entwickelt, der nur simple Befehle unterscheiden kann.
+Der Aufbau des Spracherkenners folgt
+dem in der Vorlesung beschriebenen Prinzip des Prototyp-Klassifikators. Die zugehörigen
+Spektren werden mit der Windowing-Methode berechnet.\newline
+Für beide Aufgaben wird eine Mikrofon verwendet, das über einen Klinkenstecker direkt
+mit der Soundkarte des Computers verbunden ist. Python stellt über das Paket PyAudio ein
+bequemes Interface zum Auslesen der Soundkarte zur Verfügung.\newline
+Die Dokumentation dieses gesamten Experimentes ist wie immer im folgenden Erläutert.
+\end{normalsize}
+
+%
+% CHAPTER Versuch 1
+%
+\chapter{Versuch 1}
+\label{chap:VERSUCH_1}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_1_FRAGESTELLUNG}
+Das Experiment wird begonnen indem ein beliebiges Sprachsignal mit einem Mikrofon aufgenommen wird.
+Mit Hilfe einer Triggerfunktion soll das Signal so zugeschnitten werden, dass das Sample mit dem ersten Buchstaben beginnt.
+Im Anschluss wird dieses Signal dann in sein Spektrum zerlegt und dargestellt.
+Als letztes soll noch die Windowing Methode implementiert werden um das Signal genauer zu analysieren.
+Der Aufbau besteht also lediglich aus einem Mikrofon und einem Kabel zur verbindung mit dem Eingang des Computers.
+
+\section{Messwerte}
+\label{chap:VERSUCH_1_MESSWERTE}
+Das in unserem Fall gewählte Sprachsignal lautet: 'Spaghetti Eis':
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{../Images/SpaghettiEis.png}
+	\caption{Audiosignal 'Spaghetti Eis' ohne Trigger}
+\end{figure}
+	
+	
+\section{Auswertung}
+\label{chap:VERSUCH_1_AUSWERTUNG}
+Hier is das selbe Signal wie zuvor zu sehen nur dass es dieses mal mit Triggerfunktion aufgenommen wurde:
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{../Images/SpaghettiEisCuted.png}
+	\caption{Audiosignal 'Spaghetti Eis' mit Trigger}
+\end{figure}
+Damit das Signal nach dem abschneiden trotzdem eine Sekunde lang bleibt, 
+wird mit Hilfe von ein paar Zeilen Python Code
+das restliche Array mit Nullen gefüllt.
+\newline
+\newline
+Die nun folgende Grafik zeigt das zugeschnittene Signal von oben in seinem Amplitudenspektrum:
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{../Images/SpaghettiEisFFT.png}
+	\caption{Amplitudenspektrum des 'Spaghetti Eis' Signals mit Trigger}
+\end{figure}
+Das unten stehende Schaubild zeigt das Spektrum welches mit der Windowing Methode transformiert wurde.\newline
+Dazu haben wir das Signal in Abschnitte mit einer Länge von 512 Samples, die sich jeweils zur
+Hälfte überlappen, zerlegt. Jedes Fenster wurde mit einer Gaußschen
+Fensterfunktion gewichtet, die so gewählt wird, dass die Fensterbreite 4 Standardabweichungen
+entspricht. In jedem Fenster haben wir eine lokale Fouriertransformation durchgeführt und
+dann die Fouriertransformierte über alle Fenster gemittelt.
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{../Images/SpaghettiEisWindowed.png}
+	\caption{Spektrum des 'Spaghetti Eis' Signals mit Windowing}
+\end{figure}
+
+\section{Interpretation}
+\label{chap:VERSUCH_1_INTERPRETATION}
+In dem Schaubild 2.2 gibt es nicht viel zu interpretieren. Hier ist nur sehr gut zu sehen wie das Signal auf den 
+beginn des ersten Wortes durch die Triggerfunktion zugeschnitten wurde.\newline
+Viel interessanter sind hier die beiden Spektren. Zum einen haben wir hier das welches mit dem einfachen FFT transformiert wurde
+und zum anderen das Spektrum welches mit einem Gauß als Windowing Funktion bestimmt wurde.
+Es ist schön zu erkennen wie viel 'saberer' das zweite Spektrum berechnet wurde. Die Grundfrequenz und ihre folgenden Harmonischen
+sind weiterhin gleich aber diese sind deutlich besser zu erkennen.
+
+%
+% CHAPTER Versuch 2
+%
+\chapter{Versuch 2}
+\label{chap:VERSUCH_2}
+
+\section{Fragestellung, Messprinzip, Aufbau, Messmittel}
+\label{chap:VERSUCH_2_FRAGESTELLUNG}
+\begin{normalsize}
+Im 2. Teil des Versuchs soll ein Spracherkenner gebaut werden, der vier verschiedene Worte erkennt. Dafür wird jedes Wort 5 mal aufgenommen,
+und ein Prototyp ausgerechnet indem von allen 5 die Spektren berechnet werden und anschließend der Mittelwert. Zum Vergleich der Prototypen mit einem
+anderen Signal wird der Korrelationskoeffizient nach Bravais-Pearson berechnet.
+Dafür verwenden wir ein Mikrofon und Python.
+\end{normalsize}
+
+\pagebreak
+
+\section{Messwerte}
+\label{chap:VERSUCH_2_MESSWERTE}
+\begin{normalsize}
+Im folgenden sind die Signale der der vier Wörter hoch, runter, links, rechts geplottet:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/hoch_signal.png}
+	\caption{Audiosignal vom Referenz Wort "hoch"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/runter_signal.png}
+	\caption{Audiosignal vom Referenz Wort "runter"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/links_signal.png}
+	\caption{Audiosignal vom Referenz Wort "links"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/rechts_signal.png}
+	\caption{Audiosignal vom Referenz Wort "rechts"}
+\end{figure}
+\end{normalsize}
+
+\pagebreak
+
+\section{Auswertung}
+\label{chap:VERSUCH_2_AUSWERTUNG}
+\begin{normalsize}
+Für den Spracherkenner brauchen wir zunächst die Referenzspektren für die vier Befehle
+”Hoch”, ”Tief”, ”Links” und ”Rechts”. Dazu haben wir jeweils deren Spektren mit der Windowing-Methode aus Aufgabe 1 berechnet.
+Die 5 Beispiele stammen vom selben Sprecher. Das Referenzspektrum haben wir durch Mittelung aller 5 Spektren erhalten.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/hoch_proto.png}
+	\caption{Prototyp "hoch"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/runter_proto.png}
+	\caption{Prototyp "runter"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/links_proto.png}
+	\caption{Prototyp "links"}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.8\textwidth]{../Images/rechts_proto.png}
+	\caption{Prototyp "rechts"}
+\end{figure}
+
+\centering
+\begin{tabular}{*{3}{c|c|c|p{2cm}}}
+Wörter & Tim & Roland \\
+\hline
+hoch & 1/5 & 0/5 \\
+runter & 1/5 & 1/5 \\
+links & 3/5 & 2/5 \\
+rechts & 2/5 & 0/5 \\
+
+\end{tabular}
+\captionof{table}{Erkennungsraten des Spracherkenners}
+\begin{flushleft}
+Die Wörter für das Referenzspektru wurden von Roland eingesprochen.
+Die Hit-Rate des Spracherkenners beträgt: 10/40 Wörter = 25\%\newline
+Die Fehlerrate beträgt: 30/40 Wörter = 75\%
+\end{flushleft}
+
+\begin{center}
+	\begin{tabular}{ l l }
+	\textbf{Korrelationskoeffizient:} & $r_{fg} = \frac{\sigma_{fg}} {\sigma_f * \sigma_g}$ \\
+	\end{tabular}
+\end{center}
+
+Um den Korrelationskoeffizinente zu erhalten, teilt man die Kovarianz durch die Standardabweichungen.
+
+\end{normalsize}
+
+\pagebreak
+
+\section{Interpretation}
+\label{chap:VERSUCH_2_INTERPRETATION}
+\begin{normalsize}
+Man kann sehen, dass sich die 4 Referenzspektren von einander unterscheiden. Dies ist wichtig für die Funktion des Spracherkenners.\newline
+Dennoch hat unser Spracherkenner nur eine Hit-Rate von 25\% was verschieden Ursachen haben kann. Zum einen haben wir pro Wort nur 5 Samples
+aufgenommen, was nicht gerade viel ist. Für ein Gutes Ergebnis bräuchte man deutlich mehr. Zum anderen gab es viel Hintergrundrauschen.
+\end{normalsize}
+
+%
+% CHAPTER Anhang
+%
+\renewcommand\thesection{A.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\chapter*{Anhang}
+\label{chap:APPENDIX}
+\addcontentsline{toc}{chapter}{Anhang}
+\setcounter{chapter}{0}
+\addtocounter{chapter}{1}
+\setcounter{section}{0}
+
+\section{Quellcode}
+\label{chap:APPENDIX_SOURCECODE}
+
+\subsection{Quellcode Versuch 1}
+\label{chap:APPENDIX_SOURCECODE_V1}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 1 a) und b)]{../RecordSample.py}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 1 c)]{../FftSample.py}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 1 d)]{../windowing.py}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 1 d)]{../WindowSpaghettiEis.py}
+\pagebreak
+
+\subsection{Quellcode Versuch 2}
+\label{chap:APPENDIX_SOURCECODE_V2}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 2]{../VoiceRecognition.py}
+\lstinputlisting[style=PYTHON, frame=single, captionpos=b, caption=Code von Versuch 2]{../CalculatePrototypes.py}
+
+%\section{Messergebnisse}
+%\label{chap:APPENDIX_MEASUREMENT_SOURCE}
+
+%
+% Literaturverzeichnis
+%
+\include{appendix/bibliography}
+
+\end{document}
+%------------------------------------
+% ╔═╗╔╗╔╔╦╗  ╔╦╗╔═╗╔═╗╦ ╦╔╦╗╔═╗╔╗╔╔╦╗
+% ║╣ ║║║ ║║   ║║║ ║║  ║ ║║║║║╣ ║║║ ║ 
+% ╚═╝╝╚╝═╩╝  ═╩╝╚═╝╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩ 
+%------------------------------------

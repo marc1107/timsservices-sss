@@ -1,0 +1,23 @@
+
+1.5V
+16 BitValue: 2356
+Voltage: 1.494140625
+
+2.0V
+16 BitValue: 2474
+Voltage: 2.0703125
+
+3.3V
+16 BitValue: 2736
+Voltage: 3.359375
+
+4.0V
+16 BitValue: 2884
+Voltage: 4.08203125
+
+4.95V
+16 BitValue: 3070
+Voltage: 4.990234375
+
+
+
